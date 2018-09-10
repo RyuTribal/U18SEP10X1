@@ -87,7 +87,6 @@ namespace ConsoleApp1
                         var character_query = (from char word in characters orderby word select word).Distinct();
                         int ammountThree = character_query.Count();
                         char[] resultTwo = character_query.ToArray();
-                        int[] characterCount = new int[ammountThree];
                         foreach (char ch in resultTwo)
                         {
                             int count = sentenceFour.Count(f => f == ch);
@@ -111,21 +110,6 @@ namespace ConsoleApp1
             while ((i = text.IndexOf(pattern, i)) != -1)
             {
                 i += pattern.Length;
-                count++;
-            }
-            return count;
-        }
-    }
-
-    public static class TextToolTwo
-    {
-        public static int CountCharOccurrences(string text, char  pattern)
-        {
-            int count = 0;
-            int i = 0;
-            while ((i = text.IndexOf(pattern, i)) != -1)
-            {
-                
                 count++;
             }
             return count;
