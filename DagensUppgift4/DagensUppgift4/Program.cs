@@ -21,7 +21,7 @@ namespace ConsoleApp1
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Write a sentance: ");
+                        Console.WriteLine("Write a sentence: ");
                         string sentenceOne =  Console.ReadLine() ;
                         int ammount = sentenceOne.Split(' ').Count();
                         string[] words = sentenceOne.Split(' ');
@@ -37,7 +37,7 @@ namespace ConsoleApp1
                         break;
 
                     case 2:
-                        Console.WriteLine("Write a sentance: ");
+                        Console.WriteLine("Write a sentence: ");
                         string sentenceTwo = Console.ReadLine();
                         string[] wordsTwo = sentenceTwo.Split(' ');
                         int[] wordLength = new int[wordsTwo.Count()];
@@ -58,7 +58,7 @@ namespace ConsoleApp1
                         break;
 
                     case 3:
-                        Console.WriteLine("Write a sentance: ");
+                        Console.WriteLine("Write a sentence: ");
                         string sentenceThree = Console.ReadLine();
                         string[] wordsThree = sentenceThree.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         var word_query = (from string word in wordsThree orderby word select word).Distinct();
@@ -79,6 +79,24 @@ namespace ConsoleApp1
                         }
                         switching = 1;
                         break;
+                    case 4:
+                        Console.WriteLine("Write a sentence: ");
+                        string sentenceFour = Console.ReadLine();
+                        string [] wordsFour = sentenceFour.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        char[] characters = string.Join(string.Empty,wordsFour).ToCharArray();
+                        var character_query = (from char word in characters orderby word select word).Distinct();
+                        int ammountThree = character_query.Count();
+                        char[] resultTwo = character_query.ToArray();
+                        int[] characterCount = new int[ammountThree];
+                        foreach (char ch in resultTwo)
+                        {
+                            int count = sentenceFour.Count(f => f == ch);
+                            Console.WriteLine(ch + "(" + count + ")");
+                            
+                        }
+
+                        switching = 1;
+                        break;
                 }
             } while (switching != 0);
         }
@@ -93,6 +111,21 @@ namespace ConsoleApp1
             while ((i = text.IndexOf(pattern, i)) != -1)
             {
                 i += pattern.Length;
+                count++;
+            }
+            return count;
+        }
+    }
+
+    public static class TextToolTwo
+    {
+        public static int CountCharOccurrences(string text, char  pattern)
+        {
+            int count = 0;
+            int i = 0;
+            while ((i = text.IndexOf(pattern, i)) != -1)
+            {
+                
                 count++;
             }
             return count;
