@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
 {
@@ -55,8 +56,46 @@ namespace ConsoleApp1
                         Console.ReadLine();
                         switching = 1;
                         break;
+
+                    case 3:
+                        Console.WriteLine("Write a sentance: ");
+                        string sentanceThree = Console.ReadLine();
+                        string[] wordsThree = sentanceThree.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        var word_query = (from string word in wordsThree orderby word select word).Distinct();
+                        int ammountTwo = word_query.Count();
+                        string[] result = word_query.ToArray();
+                        int[] wordCount = new int[ammountTwo];
+                        for (int i = 0; i < ammountTwo; i++)
+                        {
+                            int word_Count = TextTool.CountStringOccurrences(sentanceThree, result[i]);
+                            wordCount[i] = word_Count;
+                        }
+                        Array.Sort(wordCount, result);
+                        Array.Reverse(result);
+                        for (int i = 0; i < ammountTwo; i++)
+                        {
+                            int word_Count = TextTool.CountStringOccurrences(sentanceThree, result[i]);
+                            Console.WriteLine(result[i] + "(" + word_Count + ")");
+                        }
+                        switching = 1;
+                        break;
                 }
             } while (switching != 0);
+        }
+    }
+
+    public static class TextTool
+    {
+        public static int CountStringOccurrences(string text, string pattern)
+        {
+            int count = 0;
+            int i = 0;
+            while ((i = text.IndexOf(pattern, i)) != -1)
+            {
+                i += pattern.Length;
+                count++;
+            }
+            return count;
         }
     }
 }
