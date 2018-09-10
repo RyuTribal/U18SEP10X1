@@ -21,15 +21,36 @@ namespace ConsoleApp1
                 {
                     case 1:
                         Console.WriteLine("Write a sentance: ");
-                        string sentance =  Console.ReadLine() ;
-                        int ammount = sentance.Split(' ').Count();
-                        string[] words = sentance.Split(' ');
+                        string sentanceOne =  Console.ReadLine() ;
+                        int ammount = sentanceOne.Split(' ').Count();
+                        string[] words = sentanceOne.Split(' ');
                         Console.WriteLine("This sentance has " + ammount + "of words in it.");
                         int[] letters = new int[words.Count()];
                         for(int i=0; i < words.Length; i++)
                         {
                             letters[i] = words[i].Count();
                             Console.WriteLine(words[i] + " " + letters[i]);
+                        }
+                        Console.ReadLine();
+                        switching = 1;
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Write a sentance: ");
+                        string sentanceTwo = Console.ReadLine();
+                        string[] wordsTwo = sentanceTwo.Split(' ');
+                        int[] wordLength = new int[wordsTwo.Count()];
+                        Array.Sort(wordsTwo, (x,y) => x.Length.CompareTo(y.Length));
+                        for(int i = 0; i < wordsTwo.Length; i++)
+                        {
+                            Console.WriteLine(wordsTwo[i]);
+
+                        }
+                        Array.Reverse(wordsTwo);
+                        for (int i = 0; i < wordsTwo.Length; i++)
+                        {
+                            Console.WriteLine(wordsTwo[i]);
+
                         }
                         Console.ReadLine();
                         switching = 1;
