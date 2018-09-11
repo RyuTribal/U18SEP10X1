@@ -96,6 +96,37 @@ namespace ConsoleApp1
 
                         switching = 1;
                         break;
+                    case 5:
+                        string sentenceFive = "";
+                        string user_input = "";
+                        while (true)
+                        {
+                   
+                            while (true)
+                            {
+                                Console.WriteLine("Write a word or type END to finalize the sentance");
+                                user_input = Console.ReadLine();
+                                if (user_input == "")
+                                {
+                                    Console.WriteLine("All you had to do was type a word CJ!");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+
+
+                            }
+                            if (user_input.ToLower() == "end")
+                            {
+                                break;
+                            }
+                            sentenceFive += " " + user_input;
+
+                        }
+                        Console.WriteLine("Your sentence is:" + sentenceFive);
+                        switching = 1;
+                        break;
                 }
             } while (switching != 0);
         }
