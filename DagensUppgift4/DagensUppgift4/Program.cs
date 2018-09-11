@@ -127,6 +127,26 @@ namespace ConsoleApp1
                         Console.WriteLine("Your sentence is:" + sentenceFive);
                         switching = 1;
                         break;
+                    case 6:
+                        Random random = new Random();
+                        int randomNum = random.Next(1, 21);
+                        while (true)
+                        {
+                            Console.WriteLine("Guess a number from 1-21:");
+                            int userNumber = Convert.ToInt32(Console.ReadLine());
+                            if (userNumber == randomNum)
+                            {
+                                Console.WriteLine("Good Job you just wasted time on this program guessing a number that will never ever make your life any better\n...but congrats nonetheless");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wrong!");
+                            }
+                        }
+
+                        switching = 1;
+                        break;
                 }
             } while (switching != 0);
         }
