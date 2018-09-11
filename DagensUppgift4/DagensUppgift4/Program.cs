@@ -186,6 +186,13 @@ namespace ConsoleApp1
                         Console.WriteLine("Your sentence in leet is: " + sentenceSix);
                         switching = 1;
                         break;
+                    case 0:
+                        switching = 0;
+                        break;
+                    default:
+                        Console.WriteLine("All you had to do was choose an avalible command CJ!");
+                        switching = 1;
+                        break;
                 }
             } while (switching != 0);
         }
